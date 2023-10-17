@@ -24,13 +24,15 @@ document.addEventListener("DOMContentLoaded", function () {
     let operand1 = "";
     let operand2 = "";
     let operator = "";
+    let result = "";
 
-    
+
     function handleButtonClick(button) {
         if (button >= "0" && button <= "9") {
             operand2 += button;
             display.value = button;
         } else if (["+", "-", "*", "/"].includes(button)) {
+            // result here
             operator = button;
             operand1 = operand2;
             operand2 = "";
@@ -38,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
             operand1 = operand2 = operator = "";
             display.value = "";
         } else if (button === "=") {
+            // result here
             let result = 0;
             operand1 = parseFloat(operand1);
             operand2 = parseFloat(operand2);
@@ -57,8 +60,9 @@ document.addEventListener("DOMContentLoaded", function () {
             };
             display.value = result;
             operand1 = result;
-            operand2 = "";
+            operand2 = "";  
         }
+
     }
 
 });
