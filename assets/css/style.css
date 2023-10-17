@@ -1,0 +1,10 @@
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .31em;
+}
+
+#calculator-buttons .btn{
+    width: 100%;
+}
