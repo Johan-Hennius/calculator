@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
                          
                 operand1 = operand2;
                 operand2 = "";
-                console.log("poop");
 
             } else {
 
