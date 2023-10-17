@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let operand2 = "";
     let operator = "";
 
+    
     function handleButtonClick(button) {
         if (button >= "0" && button <= "9") {
             operand2 += button;
