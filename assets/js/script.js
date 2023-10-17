@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const buttons = ["7", "8", "9", "+", "4", "5", "6", "-", "1", "2", "3", "*", "C", "0", "=", "/"];
     const calculatorButtons = document.getElementById("calculator-buttons");
 
-    //create calculkator buttons
+    //create calculator buttons
     buttons.forEach(button => {
         const btnElement = document.createElement("button");
         btnElement.textContent = button;
@@ -24,43 +24,89 @@ document.addEventListener("DOMContentLoaded", function () {
     let operand1 = "";
     let operand2 = "";
     let operator = "";
-    let result = "";
+    let sum = "";
 
 
     function handleButtonClick(button) {
         if (button >= "0" && button <= "9") {
+
             operand2 += button;
             display.value = button;
+
         } else if (["+", "-", "*", "/"].includes(button)) {
-            // result here
+
             operator = button;
-            operand1 = operand2;
-            operand2 = "";
+
+            if (sum != result) {     
+                         
+                operand1 = operand2;
+                operand2 = "";
+                console.log("poop");
+
+            } else {
+
+                operand1 = sum;
+                operand2 = operand2;
+
+            }               
+
         } else if (button === "C") {
+
             operand1 = operand2 = operator = "";
             display.value = "";
+
         } else if (button === "=") {
-            // result here
-            let result = 0;
+
+            // sum here
+            result = 0;
             operand1 = parseFloat(operand1);
             operand2 = parseFloat(operand2);
-            switch (operator) {
-                case "+":
-                    result = operand1 + operand2;
-                    break
-                case "-":
-                    result = operand1 - operand2;
-                    break
-                case "*":
-                    result = operand1 * operand2;
-                    break
-                case "/":
-                    result = operand1 / operand2;
-                    break
-            };
-            display.value = result;
-            operand1 = result;
-            operand2 = "";  
+
+            if (sum != result) { 
+
+                switch (operator) {
+                    case "+":
+                        result = operand1 + operand2;
+                        break
+                    case "-":
+                        result = operand1 - operand2;
+                        break
+                    case "*":
+                        result = operand1 * operand2;
+                        break
+                    case "/":
+                        result = operand1 / operand2;
+                        break
+                };
+
+                display.value = result;
+                sum = result;
+                operand1 = sum;
+                operand2 = "";  
+
+            } else {
+
+                switch (operator) {
+                    case "+":
+                        result = sum + operand2;
+                        break
+                    case "-":
+                        result = sum - operand2;
+                        break
+                    case "*":
+                        result = sum * operand2;
+                        break
+                    case "/":
+                        result = sum / operand2;
+                        break
+                };
+
+                display.value = result;
+                sum = result;
+                operand1 = sum;
+                operand2 = "";
+            }
+
         }
 
     }
